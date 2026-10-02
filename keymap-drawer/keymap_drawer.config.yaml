@@ -260,6 +260,10 @@ parse_config:
   zmk_additional_includes: []
   # ----- Raw bindings for encoders/trackball -----
   raw_binding_map:
+    '&alt_space': { tap: 'Alt+Space' }
+    '&mkp LCLK': { tap: 'Left Click' }
+    '&mkp MCLK': { tap: 'Middle Click' }
+    '&mkp RCLK': { tap: 'Right Click' }
     '&TB1_mouse':  { tap: '$$trackball_19mm$$', hold: 'Mouse' }
     '&TB1_scroll':  { tap: '$$trackball_19mm$$', hold: 'Scroll' }
     '&TB2_mouse':  { tap: '$$trackball_14mm$$', hold: 'Mouse' }

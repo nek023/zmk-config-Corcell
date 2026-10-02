@@ -3,6 +3,13 @@
 Corcell 用の ZMK ファームウェアです。左右分割、Bluetooth 接続、単四電池 1 本駆動で、
 FPC スロットに PAW3222 トラックボールを載せています。
 
+## この fork のキーマップ
+
+CLine46・zen と共通の配列を設定しています。操作は [キーマップの説明](docs/keymap.md) と
+[キーマップ図](keymap-drawer/corcell.svg) を参照してください。
+以下の接続案内にある「初期配列」のキー位置は upstream の配列です。
+この fork では、Bluetooth 接続先 0 は **`'` キーを長押し ＋ Q** で選びます。
+
 ## ブランチの選び方
 
 利用者向けは **`main` と `dya-studio`** です。各ブランチの README にセットアップ手順を記載しています。
@@ -86,6 +93,9 @@ PC／ブラウザの対応状況も接続に影響します。検出で迷った
 [Discord 向け案内文](https://github.com/yuchamichami/zmk-config-Corcell/blob/dya-studio/docs/discord-connection-announcement.md) ／ [点検結果と実機確認項目](https://github.com/yuchamichami/zmk-config-Corcell/blob/dya-studio/docs/firmware-audit-2026-09-06.md)
 
 ## ファームウェアの入手と書き込み
+
+ローカルでビルドする場合は、Docker Desktop を起動して `./scripts/build-firmware.sh` を実行します。
+[ローカルビルドの詳細](docs/customize.md#ローカルでファームウェアをビルドする)を参照してください。
 
 1. 上部の Actions タブを開き、`main` の最新の Build から Artifacts の
    `firmware` をダウンロードします（ダウンロードには GitHub へのログインが必要です）。
