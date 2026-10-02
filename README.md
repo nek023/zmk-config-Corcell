@@ -2,8 +2,15 @@
 
 Corcellは、右手にトラックボールを備えた左右分割キーボードです。左右それぞれ単四電池1本で動きます。
 
-この`main`ブランチは、DYA Studioを使わない通常版です。出荷用のDYA Studio版は[dya-studioブランチ](https://github.com/yuchamichami/zmk-config-Corcell/tree/dya-studio)にあります。
+フォーク元の `main` ブランチは、DYA Studioを使わない通常版です。出荷用のDYA Studio版は[dya-studioブランチ](https://github.com/yuchamichami/zmk-config-Corcell/tree/dya-studio)にあります。
 ブラウザでキー配列やボールの感度を変えたい場合は、そちらを使ってください。
+
+## この fork のキーマップ
+
+`custom` の配列は[キーマップの説明](docs/keymap.md)と[キーマップ図](keymap-drawer/corcell.svg)で確認できます。Bluetooth 接続先 0 は `'` を長押ししながら Q を押して選びます。
+この配列の左右の UF2 は、Docker Desktop を起動して `./scripts/build-firmware.sh` でビルドできます。[ローカルビルドの詳細](docs/customize.md#ローカルでファームウェアをビルドする)
+
+以下のダウンロードと初期配列の接続手順はフォーク元の通常版用です。
 
 ## ファームのダウンロード
 
@@ -37,7 +44,7 @@ PCやスマホにつながるのは右手側です。左手の入力は右手へ
 2. レイヤー3キーを押しながら右上端のBackspaceを押し、接続先0を選びます。
 3. PCやスマホのBluetooth設定を開き、Corcellを追加します。左右を別々に登録する必要はありません。
 
-レイヤー3キーは、右親指のSpaceと、短押しでAになるキーの間です。[初期配列の図](keymap-drawer/corcell.svg)も確認できます。
+レイヤー3キーは、右親指のSpaceと、短押しでAになるキーの間です。[初期配列の図](https://github.com/yuchamichami/zmk-config-Corcell/blob/main/keymap-drawer/corcell.svg)も確認できます。
 
 接続先0を別の端末で使っている場合は、空いている番号を選んでください。どれもレイヤー3キーを押しながら操作します。
 

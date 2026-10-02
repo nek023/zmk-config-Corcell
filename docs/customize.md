@@ -11,7 +11,39 @@
 ブラウザ上で編集したい場合は、DYA Studio に対応した `dya-studio` ブランチを
 使ってください。ソースの編集もビルドも不要です。
 
-出荷時のキーマップ図は [keymap-drawer/corcell.svg](../keymap-drawer/corcell.svg) にあります。
+この fork の配列と操作は [キーマップの説明](keymap.md) を参照してください。
+
+現在のキーマップ図は [keymap-drawer/corcell.svg](../keymap-drawer/corcell.svg) にあります。
+
+## ローカルでファームウェアをビルドする
+
+Docker Desktop を起動して、リポジトリのルートで実行します。
+Python・west・Zephyr SDK を Mac にインストールする必要はありません。
+
+```sh
+./scripts/build-firmware.sh         # 左右と settings_reset
+./scripts/build-firmware.sh right   # 右のみ
+./scripts/build-firmware.sh left    # 左のみ
+./scripts/build-firmware.sh reset   # settings_reset のみ
+```
+
+`build.yaml` と同じ構成で、未コミットの変更も含めてビルドします。
+UF2 は `.build/firmware/`、ログは `.build/build-firmware.log` に保存します。
+ファイル名は GitHub Actions と同じです。
+
+初回は Docker イメージと依存ソースを取得するため時間がかかります。
+以降は Docker volume に依存ソースとビルド結果を残して再利用します。
+`config/west.yml` を変更した場合は自動で依存ソースを更新します。
+同じ manifest のまま依存ブランチの最新状態を取得する場合は、次を実行します。
+
+```sh
+./scripts/build-firmware.sh --update
+```
+
+キャッシュを使うビルドは、最後に取得した依存ソースを使います。
+生成時の依存リビジョンは `.build/firmware/west-frozen.yml` に保存します。
+キャッシュを分けたい場合は `CORCELL_BUILD_VOLUME` で volume 名を指定できます。
+`settings_reset` は通常の更新には使いません。
 
 ## FPC モジュールを切り替える
 
@@ -47,10 +79,10 @@ include:
 
 `snippets/corcell-*-slot1-paw3222/paw3222.overlay` の input processor を変えます。
 
-- 速度: `zip_xy_scaler 2 5` の 2 と 5。分子を上げると速くなります。
+- 速度: `zip_xy_scaler 3 4` の 3 と 4。分子を上げると速くなります。
 - 向き: `zip_xy_transform` に `INPUT_TRANSFORM_X_INVERT` / `Y_INVERT` /
   `XY_SWAP` を組み合わせます。
-- スクロール速度: `zip_scroll_scaler 1 10`。
+- スクロール速度: `zip_scroll_scaler 1 24`。
 
 ## 電源投入 LED
 

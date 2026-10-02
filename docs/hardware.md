@@ -37,8 +37,8 @@ chip-select GPIO は設定していません。
 ## ポインタの設定
 
 - PAW3222 の CPI はファームウェア側で上書きせず、移動量は input processor の
-  固定倍率で調整します。カーソルが `zip_xy_scaler 2 5`、スクロールが
-  `zip_scroll_scaler 1 10` です。
+  固定倍率で調整します。カーソルが `zip_xy_scaler 3 4`、スクロールが
+  `zip_scroll_scaler 1 24` です。
 - `force-awake` は有効にしていません。センサー自身の省電力モードが働きます。
 - スリープ時にセンサーを power-down させないよう、ドライバを fork して使っています
   （[yuchamichami/zmk-driver-paw3222](https://github.com/yuchamichami/zmk-driver-paw3222)）。

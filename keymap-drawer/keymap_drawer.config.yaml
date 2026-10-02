@@ -191,6 +191,7 @@ parse_config:
     QUES: '?'
   zmk_remove_keycode_prefix: []
   zmk_keycode_map:
+    LANG1: かな
     EXCLAMATION: '!'
     EXCL: '!'
     AT_SIGN: '@'
@@ -260,6 +261,11 @@ parse_config:
   zmk_additional_includes: []
   # ----- Raw bindings for encoders/trackball -----
   raw_binding_map:
+    '&cmd_tap LGUI LANG2': { tap: '英数', hold: 'LGUI' }
+    '&alt_space': { tap: 'Alt+Space' }
+    '&mkp LCLK': { tap: 'Left Click' }
+    '&mkp MCLK': { tap: 'Middle Click' }
+    '&mkp RCLK': { tap: 'Right Click' }
     '&TB1_mouse':  { tap: '$$trackball_19mm$$', hold: 'Mouse' }
     '&TB1_scroll':  { tap: '$$trackball_19mm$$', hold: 'Scroll' }
     '&TB2_mouse':  { tap: '$$trackball_14mm$$', hold: 'Mouse' }

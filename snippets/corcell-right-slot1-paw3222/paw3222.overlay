@@ -22,35 +22,25 @@
     };
 };
 
-/ {
-    corcell_right_slot1_vertical_scroll_mapper: corcell_right_slot1_vertical_scroll_mapper {
-        compatible = "zmk,input-processor-vertical-scroll";
-        #input-processor-cells = <0>;
-        type = <INPUT_EV_REL>;
-    };
-
-    corcell_right_slot1_auto_mouse_layer: corcell_right_slot1_auto_mouse_layer {
-        compatible = "zmk,input-processor-temp-layer";
-        #input-processor-cells = <2>;
-        require-prior-idle-ms = <200>;
-        excluded-positions = <19 20 21>;
-    };
+&zip_temp_layer {
+    require-prior-idle-ms = <300>;
+    excluded-positions = <19 20 21 24 38 40 41 47 48>;
 };
 
 &trackball_listener_R {
     status = "okay";
     device = <&corcell_right_slot1_paw3222>;
     input-processors =
-        <&corcell_right_slot1_auto_mouse_layer 4 700>,
         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-        <&zip_xy_scaler 2 5>;
+        <&zip_xy_scaler 3 4>,
+        <&zip_temp_layer 4 800>;
 
     scroll_layer {
-        layers = <5>;
+        layers = <3>;
         input-processors =
-            <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
-            <&corcell_right_slot1_vertical_scroll_mapper>,
-            <&zip_scroll_scaler 1 10>;
+            <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>,
+            <&zip_xy_to_scroll_mapper>,
+            <&zip_scroll_scaler 1 24>;
     };
 };
 
@@ -67,15 +57,15 @@
      * module sits rotated 180 degrees and needs no inversion.
      */
     input-processors =
-        <&corcell_right_slot1_auto_mouse_layer 4 700>,
-        <&zip_xy_scaler 2 5>;
+        <&zip_xy_scaler 3 4>,
+        <&zip_temp_layer 4 800>;
 
     scroll_layer {
-        layers = <5>;
+        layers = <3>;
         input-processors =
             <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
-            <&corcell_right_slot1_vertical_scroll_mapper>,
-            <&zip_scroll_scaler 1 10>;
+            <&zip_xy_to_scroll_mapper>,
+            <&zip_scroll_scaler 1 24>;
     };
 };
 
